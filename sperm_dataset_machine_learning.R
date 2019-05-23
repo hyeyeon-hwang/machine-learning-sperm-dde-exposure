@@ -2,11 +2,14 @@
 # dde exposure ml
 # sperm dde exposure ml
 # endocrine disruptor a risk for autism?
+library(knitr)
+library(kableExtra)
 
 library(tidyverse)
 library(caret)
-library(knitr)
-library(kableExtra)
+library(e1071) # for train
+library(randomForest) # for RF model
+library(kernlab) # for SVM model
 
 # Best machine learning results obtained by:
 # 1. Using full dataset of 52 DMRs that is NOT batch corrected: 
@@ -18,13 +21,13 @@ library(kableExtra)
 # 4. Predicting on the testing set using trained RF / SVM model 
 
 # generated datasets using DMRichR: https://github.com/ben-laufer/DMRichR
-dmr52Full <- read.delim("52_sig_individual_smoothed_DMR_methylation.txt")
+dmr52Full <- read.delim("../machine-learning-sperm/52_sig_individual_smoothed_DMR_methylation.txt")
 # generated datasets of 32 and 20 DMRs to extract sample names later
-dmr32Full <- read.delim("merged_32_individual_dmr.txt")
-dmr20Full <- read.delim("merged_20_individual_dmr.txt")
+dmr32Full <- read.delim("../machine-learning-sperm/merged_32_individual_dmr.txt")
+dmr20Full <- read.delim("../machine-learning-sperm/merged_20_individual_dmr.txt")
 
 # sample info
-sampleInfo52 <- read.csv("sample_info.csv", fileEncoding = "UTF-8-BOM") 
+sampleInfo52 <- read.csv("../machine-learning-sperm/sample_info.csv", fileEncoding = "UTF-8-BOM") 
 # extracted sample names for 32 and 20 DMRs
 sampleName32 <- colnames(dmr32Full)[-(1:3)]
 sampleName20 <- colnames(dmr20Full)[-(1:3)]
@@ -82,11 +85,10 @@ fitModelRf <- function(dmrTrainData) {
 }
 
 
-
 # Support Vector Machine (SVM) model function
 fitModelSvm <- function(dmrTrainData) {
   #dmrTrainData <- dmr32
-  
+
   set.seed(seed)
   modelSvm <- train(Tertile ~ .,
                     data = dmrTrainData, # exclude 'SampleID' column
@@ -94,6 +96,7 @@ fitModelSvm <- function(dmrTrainData) {
                     trControl = trainControl)
   return(modelSvm)
 }
+
 
 
 # Build RF model with training data 'dmr32'
@@ -108,11 +111,6 @@ cmRf <- confusionMatrix(predRf, as.factor(dmr20$Tertile))
 # No Information Rate : 0.5 
 # P-Value [Acc > NIR] : 0.001288
 
-dmr32Num <- dmr32
-dmr32TertileNum <- as.numeric(dmr32$Tertile)
-dmr32Num$Tertile <- dmr32TertileNum
-
-dmr20TertileNum <- as.numeric(dmr20$Tertile)
 
 # Build SVM model with training data 'dmr32'
 modelSvm <- fitModelSvm(dmr32)
@@ -153,7 +151,42 @@ cmKableRf <- cmTable(cmRf, "rf")
 save_kable(cmKableSvm, "cmKableSvm.pdf")
 save_kable(cmKableRf, "cmKableRf.pdf")
 
+# RF variable importance
 varImpRf <- varImp(object = modelRf)
-varImpRf
-varImpSvm <- varImp(object = modelSvm)
-varImpSvm
+varImpRfList <- varImpRf$importance
+rownames(varImpRfList) <- rownames(varImpRfList) %>% str_remove_all("`")
+varImpRfList <- data.frame(DMR = rownames(varImpRfList),
+                           Variable_Importance_Measure = varImpRfList$Overall) %>%
+  arrange(desc(Variable_Importance_Measure)) %>%
+  add_column(Ranking = 1:nrow(varImpRfList), .before = 1)
+varImpRfList 
+  
+# SVM variable importance 
+# filterVarImp returns area under ROC curve
+varImpSvm <- filterVarImp(x = dmr32[,-1], y = dmr32$Tertile) 
+varImpSvmList <- data.frame(DMR = rownames(varImpSvm),
+                            Variable_Importance_Measure = varImpSvm$First) %>%
+  arrange(desc(Variable_Importance_Measure)) %>%
+  add_column(Ranking = 1:nrow(varImpSvmList), .before = 1)
+varImpSvmList
+
+
+varImpTable <- function(varImpList, modelType) {
+  if(modelType == "rf") {
+    title <- c("RF Variable Importance List" = 3)
+  }
+  if(modelType == "svm") {
+    title <- c("SVM Variable Importance List" = 3)
+  }
+  varImpList %>%
+    kable(table.attr = "style = \"color: black; font-family: Calibri, sans-serif\"") %>%
+    kable_styling(font_size = 14, full_width = F) %>%
+    add_header_above(header = title, align = "c") %>%
+    column_spec(column = 1:3, color = "black") 
+}
+
+varImpTable(varImpRfList, "rf")
+varImpTable(varImpSvmList, "svm")
+
+save_kable(varImpRfList, "varImpRfList.pdf")
+save_kable(varImpSvmList, "varImpSvmList.pdf")
