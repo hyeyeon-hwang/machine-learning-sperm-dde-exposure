@@ -260,3 +260,18 @@ sigfeatureVarsSvm <- data.frame(Ranking = 1:length(sigFeatureDmrs),
                                 DMR = sigFeatureDmrs)
 sigfeatureVarsSvm
 varImpTable(sigfeatureVarsSvm, "sigFeature", 2)
+
+varsDf <- data.frame(Ranking = 1:261,
+                     DMR_varImp = varImpRfList$DMR,
+                     DMR_filterVarImp = varImpSvmList$DMR,
+                     DMR_Boruta = borutaAllVarsRf$DMR,
+                     DMR_sigFeature = sigfeatureVarsSvm$DMR)
+varsDf
+varDf20 <- varsDf[1:20,]
+varDf20
+top20Overlap_bor_sf <- intersect(varDf20$DMR_Boruta, varDf20$DMR_sigFeature)
+top20Overlap_bor_sf # 15/20 overlap
+
+top20Overlap_var <- intersect(varDf20$DMR_varImp, varDf20$DMR_filterVarImp)
+top20Overlap_var # 10/20 overlap
+
