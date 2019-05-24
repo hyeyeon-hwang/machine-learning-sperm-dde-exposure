@@ -152,7 +152,7 @@ save_kable(cmKableSvm, "cmKableSvm.pdf")
 save_kable(cmKableRf, "cmKableRf.pdf")
 
 # RF variable importance
-varImpRf <- varImp(object = modelRf)
+varImpRf <- varImp(object = modelRf, scale = FALSE)
 varImpRfList <- varImpRf$importance
 rownames(varImpRfList) <- rownames(varImpRfList) %>% str_remove_all("`")
 varImpRfList <- data.frame(DMR = rownames(varImpRfList),
@@ -167,26 +167,96 @@ varImpSvm <- filterVarImp(x = dmr32[,-1], y = dmr32$Tertile)
 varImpSvmList <- data.frame(DMR = rownames(varImpSvm),
                             Variable_Importance_Measure = varImpSvm$First) %>%
   arrange(desc(Variable_Importance_Measure)) %>%
-  add_column(Ranking = 1:nrow(varImpSvmList), .before = 1)
+  add_column(Ranking = 1:nrow(varImpSvm), .before = 1)
 varImpSvmList
 
 
-varImpTable <- function(varImpList, modelType) {
+varImpTable <- function(varImpList, modelType, colNum) {
   if(modelType == "rf") {
-    title <- c("RF Variable Importance List" = 3)
+    title <- c("RF (varImp) Variable Importance List" = colNum)
   }
   if(modelType == "svm") {
-    title <- c("SVM Variable Importance List" = 3)
+    title <- c("SVM (filterVarImp) Variable Importance List" = colNum)
+  }
+  if(modelType == "boruta") {
+    title <- c("RF (Boruta) Variable Importance List" = colNum)
+  }
+  if(modelType == "sigFeature") {
+    title <- c("SVM (sigFeature) Variable Importance List" = colNum)
   }
   varImpList %>%
     kable(table.attr = "style = \"color: black; font-family: Calibri, sans-serif\"") %>%
     kable_styling(font_size = 14, full_width = F) %>%
     add_header_above(header = title, align = "c") %>%
-    column_spec(column = 1:3, color = "black") 
+    column_spec(column = 1:colNum, color = "black") 
 }
 
-varImpTable(varImpRfList, "rf")
-varImpTable(varImpSvmList, "svm")
+varImpTable(varImpRfList, "rf", 3)
+varImpTable(varImpSvmList, "svm", 3)
 
 save_kable(varImpRfList, "varImpRfList.pdf")
 save_kable(varImpSvmList, "varImpSvmList.pdf")
+
+
+
+# https://www.analyticsvidhya.com/blog/2016/03/select-important-variables-boruta-package/
+# https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=2ahUKEwj4i4Gy4rTiAhVM6Z8KHZiKAnMQFjAAegQIBhAC&url=https%3A%2F%2Fwww.jstatsoft.org%2Farticle%2Fview%2Fv036i11%2Fv36i11.pdf&usg=AOvVaw3tyiHN0BCe2fkkAA6xEVDE
+# https://academic.oup.com/bib/article/20/2/492/4554516
+# http://r-statistics.co/Variable-Selection-and-Importance-With-R.html
+# Boruta RF Variable Importance
+library(Boruta)
+
+set.seed(seed)
+boruta.train <- Boruta(Tertile ~ ., data = dmr32, doTrace=2)  
+boruta.train
+plot(boruta.train)
+boruta.train.stats <- attStats(boruta.train)
+
+final.boruta <- TentativeRoughFix(boruta.train)
+final.boruta
+
+borutaVars <- getSelectedAttributes(final.boruta)
+borutaVars
+
+# borutaVars but ranked - only final 17
+boruta.df <- attStats(final.boruta)
+borutaRF <- boruta.df[which(boruta.df$decision == "Confirmed"), ]
+rownames(borutaRF) <- rownames(borutaRF) %>% str_remove_all("`")
+borutaVarsRf <- data.frame(DMR = rownames(borutaRF),
+                           meanImp = borutaRF$meanImp) %>% 
+  arrange(desc(meanImp)) %>%
+  add_column(Ranking = 1:nrow(borutaRF), .before = 1)
+borutaVarsRf
+
+# ranked boruta for all
+boruta.train.stats <- attStats(boruta.train)
+rownames(boruta.train.stats) <- rownames(boruta.train.stats) %>% str_remove_all("`")
+borutaAllVarsRf <- data.frame(DMR = rownames(boruta.train.stats),
+                           meanImp = boruta.train.stats$meanImp) %>% 
+  arrange(desc(meanImp)) %>%
+  add_column(Ranking = 1:nrow(boruta.train.stats), .before = 1)
+borutaAllVarsRf
+varImpTable(borutaAllVarsRf, "boruta", 3)
+
+# includes "Tentative" + everything in borutaRF
+# boruta.sig <- names(boruta.train$finalDecision[boruta.train$finalDecision %in% c("Confirmed", "Tentative")])  # collect Confirmed and Tentative variables
+# boruta.sig
+
+# sigFeature SVM Variable Importance
+# if (!requireNamespace("BiocManager", quietly = TRUE))
+#   install.packages("BiocManager")
+# 
+# # The following initializes usage of Bioc devel
+# BiocManager::install(version='devel')
+# 
+# BiocManager::install("sigFeature")
+# https://www.bioconductor.org/packages/devel/bioc/vignettes/sigFeature/inst/doc/vignettes.pdf
+# https://rdrr.io/bioc/sigFeature/man/sigFeature.html
+library(sigFeature)
+dmr32Matrix <- as.matrix(dmr32[,-1])
+sigFeatureRanking <- sigFeature(dmr32Matrix, dmr32$Tertile)
+sigFeatureDmrs <- colnames(dmr32Matrix[, sigFeatureRanking]) %>% str_remove_all("`")
+sigfeatureVarsSvm <- data.frame(Ranking = 1:length(sigFeatureDmrs),
+                                DMR = sigFeatureDmrs)
+sigfeatureVarsSvm
+varImpTable(sigfeatureVarsSvm, "sigFeature", 2)
