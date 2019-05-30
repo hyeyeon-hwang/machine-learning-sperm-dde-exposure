@@ -11,6 +11,7 @@ library(e1071) # for train
 library(randomForest) # for RF model
 library(kernlab) # for SVM model
 
+#install.packages("Boruta")
 library(Boruta) # random forest feature selection
 library(sigFeature) # for svm feature selection 
 
