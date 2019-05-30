@@ -1,0 +1,58 @@
+---
+title: "The Machine Learning of Sperm DDE Exposure"
+author: "Hyeyeon Hwang"
+date: "May 30, 2019"
+output:
+  html_document:
+    toc: true
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Loading Libraries
+```{r, echo=TRUE, results='hide', message=FALSE}
+# Load libraries
+library(knitr)
+library(kableExtra)
+
+library(tidyverse)
+library(caret)
+library(e1071) # for train
+library(randomForest) # for RF model
+library(kernlab) # for SVM model
+
+library(Boruta) # for RF feature selection
+library(sigFeature) # for SVM feature selection 
+```
+If the R package, package_name, is not already installed,
+use ```install.packages("package_name")``` to before loading package with ```library(package_name)```
+
+If the `sigFeature` is not already installed, use the following code to install it before loading the package with ```library(sigFeature)```
+
+```
+# To install "sigFeature": 
+if (!requireNamespace("BiocManager", quietly = TRUE))
+   install.packages("BiocManager")
+# # The following initializes usage of Bioc devel
+BiocManager::install(version='devel')
+BiocManager::install("sigFeature")
+```
+
+# R Markdown
+
+```{r cars}
+summary(cars)
+```
+
+# Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
