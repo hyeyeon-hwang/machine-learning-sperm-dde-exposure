@@ -11,6 +11,9 @@ library(e1071) # for train
 library(randomForest) # for RF model
 library(kernlab) # for SVM model
 
+library(Boruta) # random forest feature selection
+library(sigFeature) # for svm feature selection 
+
 # Best machine learning results obtained by:
 # 1. Using full dataset of 52 DMRs that is NOT batch corrected: 
 #         'dmr52Full' = "52_sig_individual_smoothed_DMR_methylation.txt"
@@ -148,8 +151,8 @@ cmTable <- function(cm, modelType) {
 cmKableSvm <- cmTable(cmSvm, "svm") 
 cmKableRf <- cmTable(cmRf, "rf")
 
-save_kable(cmKableSvm, "cmKableSvm.pdf")
-save_kable(cmKableRf, "cmKableRf.pdf")
+#save_kable(cmKableSvm, "cmKableSvm.pdf")
+#save_kable(cmKableRf, "cmKableRf.pdf")
 
 # RF variable importance
 varImpRf <- varImp(object = modelRf, scale = FALSE)
@@ -194,8 +197,8 @@ varImpTable <- function(varImpList, modelType, colNum) {
 varImpTable(varImpRfList, "rf", 3)
 varImpTable(varImpSvmList, "svm", 3)
 
-save_kable(varImpRfList, "varImpRfList.pdf")
-save_kable(varImpSvmList, "varImpSvmList.pdf")
+#save_kable(varImpRfList, "varImpRfList.pdf")
+#save_kable(varImpSvmList, "varImpSvmList.pdf")
 
 
 
@@ -204,7 +207,7 @@ save_kable(varImpSvmList, "varImpSvmList.pdf")
 # https://academic.oup.com/bib/article/20/2/492/4554516
 # http://r-statistics.co/Variable-Selection-and-Importance-With-R.html
 # Boruta RF Variable Importance
-library(Boruta)
+
 
 set.seed(seed)
 boruta.train <- Boruta(Tertile ~ ., data = dmr32, doTrace=2)  
@@ -252,7 +255,7 @@ varImpTable(borutaAllVarsRf, "boruta", 3)
 # BiocManager::install("sigFeature")
 # https://www.bioconductor.org/packages/devel/bioc/vignettes/sigFeature/inst/doc/vignettes.pdf
 # https://rdrr.io/bioc/sigFeature/man/sigFeature.html
-library(sigFeature)
+
 dmr32Matrix <- as.matrix(dmr32[,-1])
 sigFeatureRanking <- sigFeature(dmr32Matrix, dmr32$Tertile)
 sigFeatureDmrs <- colnames(dmr32Matrix[, sigFeatureRanking]) %>% str_remove_all("`")
