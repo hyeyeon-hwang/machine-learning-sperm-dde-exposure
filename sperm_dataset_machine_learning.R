@@ -131,10 +131,10 @@ cmSvm <- confusionMatrix(predSvm, as.factor(dmr20$Tertile))
 
 cmTable <- function(cm, modelType) {
   if(modelType == "rf") {
-    title <- c("RF 5-fold cross-validated confusion matrix" = 4)
+    title <- c("RF confusion matrix" = 4)
   }
   if(modelType == "svm") {
-    title <- c("SVM 5-fold cross-validated confusion matrix" = 4)
+    title <- c("SVM confusion matrix" = 4)
   }
   df <- data.frame(. = c("Predicted"),
                    .. = c("First", "Third"),
@@ -155,6 +155,25 @@ cmKableRf <- cmTable(cmRf, "rf")
 #save_kable(cmKableSvm, "cmKableSvm.pdf")
 #save_kable(cmKableRf, "cmKableRf.pdf")
 
+resRf <- c(format(cmRf$overall["Accuracy"], 2),
+           0.5, 
+           0.0012880, 
+           cmRf$overall["Kappa"])
+resSvm <- c(format(cmSvm$overall["Accuracy"], 2),
+            0.5, 
+            0.0002012, 
+            cmSvm$overall["Kappa"])
+
+res <- data.frame(RF = resRf, SVM = resSvm)
+rownames(res) <- c("Accuracy", "No Information Rate (NIR)", "P-value [Acc > NIR]", "Kappa")
+#res
+resKable <- res %>%
+  kable(table.attr = "style = \"color: black; font-family: Calibri, sans-serif\"") %>%
+  kable_styling(font_size = 14, full_width = F) %>%
+  add_header_above(header = c("Summary of RF and SVM model results" = 3), align = "c") %>%
+  column_spec(column = 1, bold = TRUE)
+
+
 # RF variable importance
 varImpRf <- varImp(object = modelRf, scale = FALSE)
 varImpRfList <- varImpRf$importance
@@ -163,7 +182,7 @@ varImpRfList <- data.frame(DMR = rownames(varImpRfList),
                            Variable_Importance_Measure = varImpRfList$Overall) %>%
   arrange(desc(Variable_Importance_Measure)) %>%
   add_column(Ranking = 1:nrow(varImpRfList), .before = 1)
-varImpRfList 
+#varImpRfList 
   
 # SVM variable importance 
 # filterVarImp returns area under ROC curve
@@ -172,21 +191,21 @@ varImpSvmList <- data.frame(DMR = rownames(varImpSvm),
                             Variable_Importance_Measure = varImpSvm$First) %>%
   arrange(desc(Variable_Importance_Measure)) %>%
   add_column(Ranking = 1:nrow(varImpSvm), .before = 1)
-varImpSvmList
+#varImpSvmList
 
 
 varImpTable <- function(varImpList, modelType, colNum) {
   if(modelType == "rf") {
-    title <- c("RF (varImp) Variable Importance List" = colNum)
+    title <- c("RF (varImp) variable importance list" = colNum)
   }
   if(modelType == "svm") {
-    title <- c("SVM (filterVarImp) Variable Importance List" = colNum)
+    title <- c("SVM (filterVarImp) variable importance list" = colNum)
   }
   if(modelType == "boruta") {
-    title <- c("RF (Boruta) Variable Importance List" = colNum)
+    title <- c("RF (Boruta) variable importance list" = colNum)
   }
   if(modelType == "sigFeature") {
-    title <- c("SVM (sigFeature) Variable Importance List" = colNum)
+    title <- c("SVM (sigFeature) variable importance list" = colNum)
   }
   varImpList %>%
     kable(table.attr = "style = \"color: black; font-family: Calibri, sans-serif\"") %>%
@@ -195,12 +214,11 @@ varImpTable <- function(varImpList, modelType, colNum) {
     column_spec(column = 1:colNum, color = "black") 
 }
 
-varImpTable(varImpRfList, "rf", 3)
-varImpTable(varImpSvmList, "svm", 3)
+rfKable <- varImpTable(varImpRfList, "rf", 3)
+svmKable <- varImpTable(varImpSvmList, "svm", 3)
 
 #save_kable(varImpRfList, "varImpRfList.pdf")
 #save_kable(varImpSvmList, "varImpSvmList.pdf")
-
 
 
 # https://www.analyticsvidhya.com/blog/2016/03/select-important-variables-boruta-package/
@@ -209,18 +227,17 @@ varImpTable(varImpSvmList, "svm", 3)
 # http://r-statistics.co/Variable-Selection-and-Importance-With-R.html
 # Boruta RF Variable Importance
 
-
 set.seed(seed)
 boruta.train <- Boruta(Tertile ~ ., data = dmr32, doTrace=2)  
-boruta.train
-plot(boruta.train)
+#boruta.train
+#plot(boruta.train)
 boruta.train.stats <- attStats(boruta.train)
 
 final.boruta <- TentativeRoughFix(boruta.train)
-final.boruta
+#final.boruta
 
 borutaVars <- getSelectedAttributes(final.boruta)
-borutaVars
+#borutaVars
 
 # borutaVars but ranked - only final 17
 boruta.df <- attStats(final.boruta)
@@ -230,7 +247,7 @@ borutaVarsRf <- data.frame(DMR = rownames(borutaRF),
                            meanImp = borutaRF$meanImp) %>% 
   arrange(desc(meanImp)) %>%
   add_column(Ranking = 1:nrow(borutaRF), .before = 1)
-borutaVarsRf
+#borutaVarsRf
 
 # ranked boruta for all
 boruta.train.stats <- attStats(boruta.train)
@@ -239,8 +256,9 @@ borutaAllVarsRf <- data.frame(DMR = rownames(boruta.train.stats),
                            meanImp = boruta.train.stats$meanImp) %>% 
   arrange(desc(meanImp)) %>%
   add_column(Ranking = 1:nrow(boruta.train.stats), .before = 1)
-borutaAllVarsRf
-varImpTable(borutaAllVarsRf, "boruta", 3)
+#borutaAllVarsRf
+borutaKable <- varImpTable(borutaAllVarsRf, "boruta", 3)
+
 
 # includes "Tentative" + everything in borutaRF
 # boruta.sig <- names(boruta.train$finalDecision[boruta.train$finalDecision %in% c("Confirmed", "Tentative")])  # collect Confirmed and Tentative variables
@@ -262,20 +280,70 @@ sigFeatureRanking <- sigFeature(dmr32Matrix, dmr32$Tertile)
 sigFeatureDmrs <- colnames(dmr32Matrix[, sigFeatureRanking]) %>% str_remove_all("`")
 sigfeatureVarsSvm <- data.frame(Ranking = 1:length(sigFeatureDmrs),
                                 DMR = sigFeatureDmrs)
-sigfeatureVarsSvm
-varImpTable(sigfeatureVarsSvm, "sigFeature", 2)
-
+#sigfeatureVarsSvm
+sigfeatureKable <- varImpTable(sigfeatureVarsSvm, "sigFeature", 2)
+#sigfeatureKable
 varsDf <- data.frame(Ranking = 1:261,
                      DMR_varImp = varImpRfList$DMR,
                      DMR_filterVarImp = varImpSvmList$DMR,
                      DMR_Boruta = borutaAllVarsRf$DMR,
                      DMR_sigFeature = sigfeatureVarsSvm$DMR)
-varsDf
+#varsDf
 varDf20 <- varsDf[1:20,]
-varDf20
-top20Overlap_bor_sf <- intersect(varDf20$DMR_Boruta, varDf20$DMR_sigFeature)
-top20Overlap_bor_sf # 15/20 overlap
+#varDf20
 
-top20Overlap_var <- intersect(varDf20$DMR_varImp, varDf20$DMR_filterVarImp)
-top20Overlap_var # 10/20 overlap
+# top20Overlap_var <- intersect(varDf20$DMR_varImp, varDf20$DMR_filterVarImp)
+# top20Overlap_var # 10/20 overlap
 
+# 15/20 DMRs overlap in top 20 DMR list for Boruta and sigFeature
+top20Overlap <- data.frame(Number = 1:15,
+                           DMR = intersect(varDf20$DMR_Boruta, varDf20$DMR_sigFeature))
+#top20Overlap 
+
+# Data frame for top 20 DMRs, overlapping ones have * character appended to DMR name
+top20 <- data.frame(Ranking = 1:20,
+                    Boruta = as.character(varDf20$DMR_Boruta), 
+                    sigFeature = as.character(varDf20$DMR_sigFeature)) %>%
+  mutate_if(is.factor, as.character) 
+top20 <- top20 %>%
+  mutate(Boruta = replace(Boruta, 
+                          which(top20$Boruta %in% top20Overlap$DMR == TRUE),
+                          paste(Boruta[which(top20$Boruta %in% top20Overlap$DMR == TRUE)], 
+                                "*",
+                                sep=""))) %>%
+  mutate(sigFeature = replace(sigFeature, 
+                          which(top20$sigFeature %in% top20Overlap$DMR == TRUE),
+                          paste(sigFeature[which(top20$sigFeature %in% top20Overlap$DMR == TRUE)], 
+                                "*",
+                                sep="")))
+
+# Kable table for top 20 DMRs
+top20Kable <- top20 %>%
+  kable(table.attr = "style = \"color: black; font-family: Calibri, sans-serif\"") %>%
+  kable_styling(font_size = 14, full_width = F) %>%
+  add_header_above(header = c("Top 20 DMR predictors" = 3), align = "c") %>%
+  column_spec(column = 1:3, color = "black") 
+#top20Kable
+
+# Kable table for 15 overlapping DMRs in top 20 DMRs
+top20OverlapKable <- top20Overlap %>%
+  kable(table.attr = "style = \"color: black; font-family: Calibri, sans-serif\"") %>%
+  kable_styling(font_size = 14, full_width = F) %>%
+  add_header_above(header = c("Overlapping top 20 DMR predictors" = 2), align = "c") %>%
+  column_spec(column = 1:2, color = "black") 
+#top20OverlapKable
+
+
+cmRf
+cmSvm
+
+resKable
+
+cmKableSvm
+cmKableRf
+
+borutaKable
+sigfeatureKable
+
+top20Kable
+top20OverlapKable
