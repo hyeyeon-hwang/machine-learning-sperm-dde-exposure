@@ -108,7 +108,7 @@ modelRf <- fitModelRf(dmr32)
 # Predict on testing data 'dmr20' with RF model
 predRf <- predict(modelRf, dmr20)
 # Confusion matrix of prediction results
-cmRf <- confusionMatrix(predRf, as.factor(dmr20$Tertile))
+cmRf <- confusionMatrix(predRf, as.factor(dmr20$Tertile), positive = "Third")
 # 3/20 misclassified
 # Accuracy : 0.85 
 # Kappa : 0.7
@@ -121,7 +121,7 @@ modelSvm <- fitModelSvm(dmr32)
 # Predict on testing data 'dmr20' with SVM model
 predSvm <- predict(modelSvm, dmr20)
 # Confusion matrix of prediction results
-cmSvm <- confusionMatrix(predSvm, as.factor(dmr20$Tertile))
+cmSvm <- confusionMatrix(predSvm, as.factor(dmr20$Tertile), positive = "Third")
 # 2/20 misclassified
 # Accuracy : 0.9
 # Kappa : 0.8
@@ -150,7 +150,24 @@ cmTable <- function(cm, modelType) {
 }
 
 cmKableSvm <- cmTable(cmSvm, "svm") 
+cmKableSvm
 cmKableRf <- cmTable(cmRf, "rf")
+
+cmTableLegend <- function() {
+  df <- data.frame(. = c("Predicted"),
+                   .. = c("Positive_class", "Negative_class"),
+                   Positive_class = c("True positive", "False negative"),
+                   Negative_class = c("False positive", "True negative"))
+  df %>%
+    kable(table.attr = "style = \"color: black; font-family: Calibri, sans-serif\"") %>%
+    kable_styling(font_size = 14, full_width = F) %>%
+    add_header_above(c(" ", " ", "Actual" = 2)) %>%
+    add_header_above(header = c("Confusion matrix legend" = 4), align = "c") %>%
+    column_spec(column = 1:2, bold = TRUE, color = "black") %>%
+    collapse_rows(columns = 1)
+}
+
+cmTableLegend()
 
 #save_kable(cmKableSvm, "cmKableSvm.pdf")
 #save_kable(cmKableRf, "cmKableRf.pdf")
@@ -170,7 +187,7 @@ rownames(res) <- c("Accuracy", "No Information Rate (NIR)", "P-value [Acc > NIR]
 resKable <- res %>%
   kable(table.attr = "style = \"color: black; font-family: Calibri, sans-serif\"") %>%
   kable_styling(font_size = 14, full_width = F) %>%
-  add_header_above(header = c("Summary of RF and SVM model results" = 3), align = "c") %>%
+  add_header_above(header = c("Summary of model results" = 3), align = "c") %>%
   column_spec(column = 1, bold = TRUE)
 
 

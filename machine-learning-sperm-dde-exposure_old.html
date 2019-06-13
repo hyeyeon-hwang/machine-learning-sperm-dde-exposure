@@ -256,7 +256,7 @@ modelRf &lt;- fitModelRf(dmr32)
 # Predict on testing data 'dmr20' with RF model
 predRf &lt;- predict(modelRf, dmr20)
 # Confusion matrix of prediction results
-cmRf &lt;- confusionMatrix(predRf, as.factor(dmr20$Tertile), positive = &quot;Third&quot;)
+cmRf &lt;- confusionMatrix(predRf, as.factor(dmr20$Tertile))
 # 3/20 misclassified
 # Accuracy : 0.85 
 # Kappa : 0.7
@@ -270,7 +270,7 @@ modelSvm &lt;- fitModelSvm(dmr32)
 # Predict on testing data 'dmr20' with SVM model
 predSvm &lt;- predict(modelSvm, dmr20)
 # Confusion matrix of prediction results
-cmSvm &lt;- confusionMatrix(predSvm, as.factor(dmr20$Tertile), positive = &quot;Third&quot;)
+cmSvm &lt;- confusionMatrix(predSvm, as.factor(dmr20$Tertile))
 # 2/20 misclassified
 # Accuracy : 0.9
 # Kappa : 0.8
@@ -285,8 +285,8 @@ cmSvm &lt;- confusionMatrix(predSvm, as.factor(dmr20$Tertile), positive = &quot;
   }
   df &lt;- data.frame(. = c(&quot;Predicted&quot;),
                    .. = c(&quot;First&quot;, &quot;Third&quot;),
-                   Third = c(cm$table[&quot;First&quot;, &quot;Third&quot;], cm$table[&quot;Third&quot;, &quot;Third&quot;]),
-                   First = c(cm$table[&quot;First&quot;, &quot;First&quot;], cm$table[&quot;Third&quot;, &quot;First&quot;]))
+                   First = c(cm$table[&quot;First&quot;, &quot;First&quot;], cm$table[&quot;Third&quot;, &quot;First&quot;]),
+                   Third = c(cm$table[&quot;First&quot;, &quot;Third&quot;], cm$table[&quot;Third&quot;, &quot;Third&quot;]))
   df %&gt;%
     kable(table.attr = &quot;style = \&quot;color: black; font-family: Calibri, sans-serif\&quot;&quot;) %&gt;%
     kable_styling(font_size = 14, full_width = F) %&gt;%
@@ -296,21 +296,6 @@ cmSvm &lt;- confusionMatrix(predSvm, as.factor(dmr20$Tertile), positive = &quot;
     collapse_rows(columns = 1)
 }
 
-cmTableLegend &lt;- function() {
-  df &lt;- data.frame(. = c(&quot;Predicted&quot;),
-                   .. = c(&quot;Positive_class&quot;, &quot;Negative_class&quot;),
-                   Positive_class = c(&quot;True positive&quot;, &quot;False negative&quot;),
-                   Negative_class = c(&quot;False positive&quot;, &quot;True negative&quot;))
-  df %&gt;%
-    kable(table.attr = &quot;style = \&quot;color: black; font-family: Calibri, sans-serif\&quot;&quot;) %&gt;%
-    kable_styling(font_size = 14, full_width = F) %&gt;%
-    add_header_above(c(&quot; &quot;, &quot; &quot;, &quot;Actual&quot; = 2)) %&gt;%
-    add_header_above(header = c(&quot;Confusion matrix legend&quot; = 4), align = &quot;c&quot;) %&gt;%
-    column_spec(column = 1:2, bold = TRUE, color = &quot;black&quot;) %&gt;%
-    collapse_rows(columns = 1)
-}
-
-cmLegend &lt;- cmTableLegend()
 cmKableSvm &lt;- cmTable(cmSvm, &quot;svm&quot;) 
 cmKableRf &lt;- cmTable(cmRf, &quot;rf&quot;)
 
@@ -332,7 +317,7 @@ rownames(res) &lt;- c(&quot;Accuracy&quot;, &quot;No Information Rate (NIR)&quot
 resKable &lt;- res %&gt;%
   kable(table.attr = &quot;style = \&quot;color: black; font-family: Calibri, sans-serif\&quot;&quot;) %&gt;%
   kable_styling(font_size = 14, full_width = F) %&gt;%
-  add_header_above(header = c(&quot;Summary of model results&quot; = 3), align = &quot;c&quot;) %&gt;%
+  add_header_above(header = c(&quot;Summary of RF and SVM model results&quot; = 3), align = &quot;c&quot;) %&gt;%
   column_spec(column = 1, bold = TRUE)</code></pre>
 </div>
 </div>
@@ -501,70 +486,6 @@ top20OverlapKable &lt;- top20Overlap %&gt;%
   column_spec(column = 1:2, color = &quot;black&quot;) 
 #top20OverlapKable</code></pre>
 <p>Final results: confusion matrices, results summary table, top 20 DMRs, and overlapping DMRs</p>
-<pre class="r"><code>cmLegend</code></pre>
-<table style="color: black; font-family: Calibri, sans-serif font-size: 14px; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
-<thead>
-<tr>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
-Confusion matrix legend
-</div>
-</th>
-</tr>
-<tr>
-<th style="border-bottom:hidden" colspan="1">
-</th>
-<th style="border-bottom:hidden" colspan="1">
-</th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
-Actual
-</div>
-</th>
-</tr>
-<tr>
-<th style="text-align:left;">
-.
-</th>
-<th style="text-align:left;">
-..
-</th>
-<th style="text-align:left;">
-Positive_class
-</th>
-<th style="text-align:left;">
-Negative_class
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;font-weight: bold;color: black;vertical-align: middle !important;" rowspan="2">
-Predicted
-</td>
-<td style="text-align:left;font-weight: bold;color: black;">
-Positive_class
-</td>
-<td style="text-align:left;">
-True positive
-</td>
-<td style="text-align:left;">
-False positive
-</td>
-</tr>
-<tr>
-<td style="text-align:left;font-weight: bold;color: black;">
-Negative_class
-</td>
-<td style="text-align:left;">
-False negative
-</td>
-<td style="text-align:left;">
-True negative
-</td>
-</tr>
-</tbody>
-</table>
 <pre class="r"><code>cmRf</code></pre>
 <pre><code>## Confusion Matrix and Statistics
 ## 
@@ -581,16 +502,16 @@ True negative
 ##                   Kappa : 0.7             
 ##  Mcnemar's Test P-Value : 1.000000        
 ##                                           
-##             Sensitivity : 0.9000          
-##             Specificity : 0.8000          
-##          Pos Pred Value : 0.8182          
-##          Neg Pred Value : 0.8889          
+##             Sensitivity : 0.8000          
+##             Specificity : 0.9000          
+##          Pos Pred Value : 0.8889          
+##          Neg Pred Value : 0.8182          
 ##              Prevalence : 0.5000          
-##          Detection Rate : 0.4500          
-##    Detection Prevalence : 0.5500          
+##          Detection Rate : 0.4000          
+##    Detection Prevalence : 0.4500          
 ##       Balanced Accuracy : 0.8500          
 ##                                           
-##        'Positive' Class : Third           
+##        'Positive' Class : First           
 ## </code></pre>
 <pre class="r"><code>cmSvm</code></pre>
 <pre><code>## Confusion Matrix and Statistics
@@ -617,7 +538,7 @@ True negative
 ##    Detection Prevalence : 0.50           
 ##       Balanced Accuracy : 0.90           
 ##                                          
-##        'Positive' Class : Third          
+##        'Positive' Class : First          
 ## </code></pre>
 <pre class="r"><code>resKable</code></pre>
 <table style="color: black; font-family: Calibri, sans-serif font-size: 14px; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
@@ -625,7 +546,7 @@ True negative
 <tr>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
-Summary of model results
+Summary of RF and SVM model results
 </div>
 </th>
 </tr>
@@ -716,10 +637,10 @@ Actual
 ..
 </th>
 <th style="text-align:right;">
-Third
+First
 </th>
 <th style="text-align:right;">
-First
+Third
 </th>
 </tr>
 </thead>
@@ -732,10 +653,10 @@ Predicted
 First
 </td>
 <td style="text-align:right;">
-1
+9
 </td>
 <td style="text-align:right;">
-9
+1
 </td>
 </tr>
 <tr>
@@ -743,10 +664,10 @@ First
 Third
 </td>
 <td style="text-align:right;">
-9
+1
 </td>
 <td style="text-align:right;">
-1
+9
 </td>
 </tr>
 </tbody>
@@ -780,10 +701,10 @@ Actual
 ..
 </th>
 <th style="text-align:right;">
-Third
+First
 </th>
 <th style="text-align:right;">
-First
+Third
 </th>
 </tr>
 </thead>
@@ -796,10 +717,10 @@ Predicted
 First
 </td>
 <td style="text-align:right;">
-1
+8
 </td>
 <td style="text-align:right;">
-8
+1
 </td>
 </tr>
 <tr>
@@ -807,10 +728,10 @@ First
 Third
 </td>
 <td style="text-align:right;">
-9
+2
 </td>
 <td style="text-align:right;">
-2
+9
 </td>
 </tr>
 </tbody>
