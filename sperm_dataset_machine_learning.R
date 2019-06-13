@@ -137,9 +137,9 @@ cmTable <- function(cm, modelType) {
     title <- c("SVM confusion matrix" = 4)
   }
   df <- data.frame(. = c("Predicted"),
-                   .. = c("First", "Third"),
-                   First = c(cm$table["First", "First"], cm$table["Third", "First"]),
-                   Third = c(cm$table["First", "Third"], cm$table["Third", "Third"]))
+                   .. = c("Third", "First"),
+                   Third = c(cm$table["Third", "Third"], cm$table["First", "Third"]),
+                   First = c(cm$table["Third", "First"], cm$table["First", "First"]))
   df %>%
     kable(table.attr = "style = \"color: black; font-family: Calibri, sans-serif\"") %>%
     kable_styling(font_size = 14, full_width = F) %>%
@@ -167,7 +167,7 @@ cmTableLegend <- function() {
     collapse_rows(columns = 1)
 }
 
-cmTableLegend()
+cmLegend <- cmTableLegend()
 
 #save_kable(cmKableSvm, "cmKableSvm.pdf")
 #save_kable(cmKableRf, "cmKableRf.pdf")
@@ -354,6 +354,7 @@ top20OverlapKable <- top20Overlap %>%
 cmRf
 cmSvm
 
+cmLegend
 resKable
 
 cmKableSvm

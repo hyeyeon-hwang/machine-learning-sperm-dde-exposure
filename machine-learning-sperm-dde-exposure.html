@@ -284,9 +284,9 @@ cmSvm &lt;- confusionMatrix(predSvm, as.factor(dmr20$Tertile), positive = &quot;
     title &lt;- c(&quot;SVM confusion matrix&quot; = 4)
   }
   df &lt;- data.frame(. = c(&quot;Predicted&quot;),
-                   .. = c(&quot;First&quot;, &quot;Third&quot;),
-                   Third = c(cm$table[&quot;First&quot;, &quot;Third&quot;], cm$table[&quot;Third&quot;, &quot;Third&quot;]),
-                   First = c(cm$table[&quot;First&quot;, &quot;First&quot;], cm$table[&quot;Third&quot;, &quot;First&quot;]))
+                   .. = c(&quot;Third&quot;, &quot;First&quot;),
+                   Third = c(cm$table[&quot;Third&quot;, &quot;Third&quot;], cm$table[&quot;First&quot;, &quot;Third&quot;]),
+                   First = c(cm$table[&quot;Third&quot;, &quot;First&quot;], cm$table[&quot;First&quot;, &quot;First&quot;]))
   df %&gt;%
     kable(table.attr = &quot;style = \&quot;color: black; font-family: Calibri, sans-serif\&quot;&quot;) %&gt;%
     kable_styling(font_size = 14, full_width = F) %&gt;%
@@ -313,7 +313,6 @@ cmTableLegend &lt;- function() {
 cmLegend &lt;- cmTableLegend()
 cmKableSvm &lt;- cmTable(cmSvm, &quot;svm&quot;) 
 cmKableRf &lt;- cmTable(cmRf, &quot;rf&quot;)
-
 #save_kable(cmKableSvm, &quot;cmKableSvm.pdf&quot;)
 #save_kable(cmKableRf, &quot;cmKableRf.pdf&quot;)</code></pre>
 <p>Summary of results for RF and SVM models</p>
@@ -729,17 +728,6 @@ First
 Predicted
 </td>
 <td style="text-align:left;font-weight: bold;color: black;">
-First
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-9
-</td>
-</tr>
-<tr>
-<td style="text-align:left;font-weight: bold;color: black;">
 Third
 </td>
 <td style="text-align:right;">
@@ -747,6 +735,17 @@ Third
 </td>
 <td style="text-align:right;">
 1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;color: black;">
+First
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+9
 </td>
 </tr>
 </tbody>
@@ -793,17 +792,6 @@ First
 Predicted
 </td>
 <td style="text-align:left;font-weight: bold;color: black;">
-First
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;font-weight: bold;color: black;">
 Third
 </td>
 <td style="text-align:right;">
@@ -811,6 +799,17 @@ Third
 </td>
 <td style="text-align:right;">
 2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;color: black;">
+First
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+8
 </td>
 </tr>
 </tbody>
@@ -6208,17 +6207,17 @@ chr9:65389175-65390088
 </tr>
 </tbody>
 </table>
-<pre class="r"><code>save_kable(cmLegend, &quot;cmLegend.png&quot;)
-save_kable(resKable, &quot;resKable.png&quot;)
-
-save_kable(cmKableSvm, &quot;cmKableSvm.png&quot;)
-save_kable(cmKableRf, &quot;cmKableRf.png&quot;)
-
-save_kable(borutaKable, &quot;borutaKable.png&quot;)
-save_kable(sigfeatureKable, &quot;sigfeatureKable.png&quot;)
-
-save_kable(top20Kable, &quot;top20Kable.png&quot;)
-save_kable(top20OverlapKable, &quot;top20OverlapKable.png&quot;)</code></pre>
+<pre class="r"><code># save_kable(cmLegend, &quot;cmLegend.png&quot;)
+# save_kable(resKable, &quot;resKable.png&quot;)
+# 
+# save_kable(cmKableSvm, &quot;cmKableSvm.png&quot;)
+# save_kable(cmKableRf, &quot;cmKableRf.png&quot;)
+# 
+# save_kable(borutaKable, &quot;borutaKable.png&quot;)
+# save_kable(sigfeatureKable, &quot;sigfeatureKable.png&quot;)
+# 
+# save_kable(top20Kable, &quot;top20Kable.png&quot;)
+# save_kable(top20OverlapKable, &quot;top20OverlapKable.png&quot;)</code></pre>
 </div>
 
 
