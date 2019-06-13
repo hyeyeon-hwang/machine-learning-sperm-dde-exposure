@@ -415,4 +415,16 @@ sigfeatureKable
 
 top20Kable
 top20OverlapKable
+
+save_kable(cmLegend, "cmLegend.png")
+save_kable(resKable, "resKable.png")
+
+save_kable(cmKableSvm, "cmKableSvm.png")
+save_kable(cmKableRf, "cmKableRf.png")
+
+save_kable(borutaKable, "borutaKable.png")
+save_kable(sigfeatureKable, "sigfeatureKable.png")
+
+save_kable(top20Kable, "top20Kable.png")
+save_kable(top20OverlapKable, "top20OverlapKable.png")
 ```

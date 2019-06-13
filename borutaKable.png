@@ -14,33 +14,1318 @@
 <body style="background-color:white;">
 <table style="color: black; font-family: Calibri, sans-serif font-size: 14px; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
  <thead>
-<tr><th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">Summary of model results</div></th></tr>
+<tr><th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">RF (Boruta) variable importance list</div></th></tr>
   <tr>
-   <th style="text-align:left;">   </th>
-   <th style="text-align:left;"> RF </th>
-   <th style="text-align:left;"> SVM </th>
+   <th style="text-align:right;"> Ranking </th>
+   <th style="text-align:left;"> DMR </th>
+   <th style="text-align:right;"> meanImp </th>
   </tr>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;font-weight: bold;"> Accuracy </td>
-   <td style="text-align:left;"> 0.85 </td>
-   <td style="text-align:left;"> 0.9 </td>
+   <td style="text-align:right;color: black;"> 1 </td>
+   <td style="text-align:left;color: black;"> chr3:17133705-17133973 </td>
+   <td style="text-align:right;color: black;"> 5.7526389 </td>
   </tr>
   <tr>
-   <td style="text-align:left;font-weight: bold;"> No Information Rate (NIR) </td>
-   <td style="text-align:left;"> 0.5 </td>
-   <td style="text-align:left;"> 0.5 </td>
+   <td style="text-align:right;color: black;"> 2 </td>
+   <td style="text-align:left;color: black;"> chr5:7927007-7928271 </td>
+   <td style="text-align:right;color: black;"> 5.6800746 </td>
   </tr>
   <tr>
-   <td style="text-align:left;font-weight: bold;"> P-value [Acc &gt; NIR] </td>
-   <td style="text-align:left;"> 0.001288 </td>
-   <td style="text-align:left;"> 0.0002012 </td>
+   <td style="text-align:right;color: black;"> 3 </td>
+   <td style="text-align:left;color: black;"> chr10:14980617-14981682 </td>
+   <td style="text-align:right;color: black;"> 5.1233706 </td>
   </tr>
   <tr>
-   <td style="text-align:left;font-weight: bold;"> Kappa </td>
-   <td style="text-align:left;"> 0.7 </td>
-   <td style="text-align:left;"> 0.8 </td>
+   <td style="text-align:right;color: black;"> 4 </td>
+   <td style="text-align:left;color: black;"> chr10:128066899-128068111 </td>
+   <td style="text-align:right;color: black;"> 3.9420646 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 5 </td>
+   <td style="text-align:left;color: black;"> chr13:110824201-110825915 </td>
+   <td style="text-align:right;color: black;"> 3.6976810 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 6 </td>
+   <td style="text-align:left;color: black;"> chr3:43484849-43485664 </td>
+   <td style="text-align:right;color: black;"> 3.6533126 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 7 </td>
+   <td style="text-align:left;color: black;"> chr20:63948311-63949065 </td>
+   <td style="text-align:right;color: black;"> 3.5019447 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 8 </td>
+   <td style="text-align:left;color: black;"> chr2:98280512-98281225 </td>
+   <td style="text-align:right;color: black;"> 3.4931089 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 9 </td>
+   <td style="text-align:left;color: black;"> chr22:48391271-48391848 </td>
+   <td style="text-align:right;color: black;"> 3.4408733 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 10 </td>
+   <td style="text-align:left;color: black;"> chr22:46103014-46103671 </td>
+   <td style="text-align:right;color: black;"> 3.4382904 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 11 </td>
+   <td style="text-align:left;color: black;"> chr13:114042350-114043198 </td>
+   <td style="text-align:right;color: black;"> 3.4252118 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 12 </td>
+   <td style="text-align:left;color: black;"> chr2:240961395-240961697 </td>
+   <td style="text-align:right;color: black;"> 3.3622865 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 13 </td>
+   <td style="text-align:left;color: black;"> chr10:128632188-128633026 </td>
+   <td style="text-align:right;color: black;"> 3.2725355 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 14 </td>
+   <td style="text-align:left;color: black;"> chr4:2161268-2161626 </td>
+   <td style="text-align:right;color: black;"> 3.2301723 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 15 </td>
+   <td style="text-align:left;color: black;"> chr1:236105955-236106585 </td>
+   <td style="text-align:right;color: black;"> 3.2112547 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 16 </td>
+   <td style="text-align:left;color: black;"> chr10:14989759-14992906 </td>
+   <td style="text-align:right;color: black;"> 3.0414835 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 17 </td>
+   <td style="text-align:left;color: black;"> chr12:132159249-132159887 </td>
+   <td style="text-align:right;color: black;"> 2.6338921 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 18 </td>
+   <td style="text-align:left;color: black;"> chr22:46104978-46105643 </td>
+   <td style="text-align:right;color: black;"> 2.2472192 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 19 </td>
+   <td style="text-align:left;color: black;"> chr11:130337355-130337844 </td>
+   <td style="text-align:right;color: black;"> 2.2354363 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 20 </td>
+   <td style="text-align:left;color: black;"> chr9:65389175-65390088 </td>
+   <td style="text-align:right;color: black;"> 2.1937145 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 21 </td>
+   <td style="text-align:left;color: black;"> chr13:74157469-74158445 </td>
+   <td style="text-align:right;color: black;"> 2.0530778 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 22 </td>
+   <td style="text-align:left;color: black;"> chr14:51777723-51779022 </td>
+   <td style="text-align:right;color: black;"> 2.0488863 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 23 </td>
+   <td style="text-align:left;color: black;"> chr2:85827268-85827930 </td>
+   <td style="text-align:right;color: black;"> 1.9347469 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 24 </td>
+   <td style="text-align:left;color: black;"> chr11:39441672-39442487 </td>
+   <td style="text-align:right;color: black;"> 1.5839551 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 25 </td>
+   <td style="text-align:left;color: black;"> chr16:87718637-87719112 </td>
+   <td style="text-align:right;color: black;"> 1.5130056 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 26 </td>
+   <td style="text-align:left;color: black;"> chr12:72432326-72432767 </td>
+   <td style="text-align:right;color: black;"> 1.3208919 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 27 </td>
+   <td style="text-align:left;color: black;"> chr1:154969925-154970308 </td>
+   <td style="text-align:right;color: black;"> 1.3094005 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 28 </td>
+   <td style="text-align:left;color: black;"> chr7:158253038-158253547 </td>
+   <td style="text-align:right;color: black;"> 1.2233613 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 29 </td>
+   <td style="text-align:left;color: black;"> chr20:25855407-25857345 </td>
+   <td style="text-align:right;color: black;"> 1.1814562 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 30 </td>
+   <td style="text-align:left;color: black;"> chr10:36481441-36482369 </td>
+   <td style="text-align:right;color: black;"> 1.1365061 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 31 </td>
+   <td style="text-align:left;color: black;"> chr10:132441940-132442225 </td>
+   <td style="text-align:right;color: black;"> 1.0865651 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 32 </td>
+   <td style="text-align:left;color: black;"> chr8:140348407-140349726 </td>
+   <td style="text-align:right;color: black;"> 1.0652034 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 33 </td>
+   <td style="text-align:left;color: black;"> chr7:158112730-158113210 </td>
+   <td style="text-align:right;color: black;"> 1.0628223 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 34 </td>
+   <td style="text-align:left;color: black;"> chr6:107675389-107676377 </td>
+   <td style="text-align:right;color: black;"> 1.0583965 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 35 </td>
+   <td style="text-align:left;color: black;"> chr2:132275491-132277138 </td>
+   <td style="text-align:right;color: black;"> 1.0519020 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 36 </td>
+   <td style="text-align:left;color: black;"> chr22:35551620-35552217 </td>
+   <td style="text-align:right;color: black;"> 0.9975368 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 37 </td>
+   <td style="text-align:left;color: black;"> chr22:26611871-26612465 </td>
+   <td style="text-align:right;color: black;"> 0.9930245 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 38 </td>
+   <td style="text-align:left;color: black;"> chr7:57771054-57771856 </td>
+   <td style="text-align:right;color: black;"> 0.9494466 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 39 </td>
+   <td style="text-align:left;color: black;"> chr4:123114860-123116191 </td>
+   <td style="text-align:right;color: black;"> 0.8921507 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 40 </td>
+   <td style="text-align:left;color: black;"> chr19:21360600-21361693 </td>
+   <td style="text-align:right;color: black;"> 0.8684075 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 41 </td>
+   <td style="text-align:left;color: black;"> chr3:159679983-159680248 </td>
+   <td style="text-align:right;color: black;"> 0.8638897 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 42 </td>
+   <td style="text-align:left;color: black;"> chr11:134033575-134036254 </td>
+   <td style="text-align:right;color: black;"> 0.8505938 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 43 </td>
+   <td style="text-align:left;color: black;"> chr1:41396679-41396928 </td>
+   <td style="text-align:right;color: black;"> 0.8439253 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 44 </td>
+   <td style="text-align:left;color: black;"> chr4:9658504-9659097 </td>
+   <td style="text-align:right;color: black;"> 0.8393657 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 45 </td>
+   <td style="text-align:left;color: black;"> chr15:25876339-25878187 </td>
+   <td style="text-align:right;color: black;"> 0.8278592 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 46 </td>
+   <td style="text-align:left;color: black;"> chr4:158572301-158574345 </td>
+   <td style="text-align:right;color: black;"> 0.7852171 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 47 </td>
+   <td style="text-align:left;color: black;"> chr6:20244189-20245061 </td>
+   <td style="text-align:right;color: black;"> 0.7655396 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 48 </td>
+   <td style="text-align:left;color: black;"> chr18:78746307-78746768 </td>
+   <td style="text-align:right;color: black;"> 0.7495642 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 49 </td>
+   <td style="text-align:left;color: black;"> chr20:33701232-33702079 </td>
+   <td style="text-align:right;color: black;"> 0.7208383 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 50 </td>
+   <td style="text-align:left;color: black;"> chr2:52007720-52008486 </td>
+   <td style="text-align:right;color: black;"> 0.7108596 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 51 </td>
+   <td style="text-align:left;color: black;"> chr7:156194014-156198884 </td>
+   <td style="text-align:right;color: black;"> 0.6922115 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 52 </td>
+   <td style="text-align:left;color: black;"> chr3:23882554-23883061 </td>
+   <td style="text-align:right;color: black;"> 0.6880841 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 53 </td>
+   <td style="text-align:left;color: black;"> chr14:51749986-51751584 </td>
+   <td style="text-align:right;color: black;"> 0.6758003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 54 </td>
+   <td style="text-align:left;color: black;"> chr9:90213810-90216254 </td>
+   <td style="text-align:right;color: black;"> 0.6534259 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 55 </td>
+   <td style="text-align:left;color: black;"> chr11:65316878-65317046 </td>
+   <td style="text-align:right;color: black;"> 0.6443142 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 56 </td>
+   <td style="text-align:left;color: black;"> chr7:102250234-102250960 </td>
+   <td style="text-align:right;color: black;"> 0.6154889 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 57 </td>
+   <td style="text-align:left;color: black;"> chr5:16717670-16718384 </td>
+   <td style="text-align:right;color: black;"> 0.6092155 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 58 </td>
+   <td style="text-align:left;color: black;"> chr17:68180500-68182774 </td>
+   <td style="text-align:right;color: black;"> 0.5791163 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 59 </td>
+   <td style="text-align:left;color: black;"> chr5:10638535-10638831 </td>
+   <td style="text-align:right;color: black;"> 0.5778547 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 60 </td>
+   <td style="text-align:left;color: black;"> chr7:13806368-13806879 </td>
+   <td style="text-align:right;color: black;"> 0.5724721 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 61 </td>
+   <td style="text-align:left;color: black;"> chr20:4732335-4733018 </td>
+   <td style="text-align:right;color: black;"> 0.5719546 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 62 </td>
+   <td style="text-align:left;color: black;"> chr17:15102044-15102270 </td>
+   <td style="text-align:right;color: black;"> 0.5677707 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 63 </td>
+   <td style="text-align:left;color: black;"> chr19:2602708-2603627 </td>
+   <td style="text-align:right;color: black;"> 0.5484894 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 64 </td>
+   <td style="text-align:left;color: black;"> chr2:104582495-104585731 </td>
+   <td style="text-align:right;color: black;"> 0.5477296 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 65 </td>
+   <td style="text-align:left;color: black;"> chr6:10662326-10663473 </td>
+   <td style="text-align:right;color: black;"> 0.5371507 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 66 </td>
+   <td style="text-align:left;color: black;"> chr4:109011917-109012813 </td>
+   <td style="text-align:right;color: black;"> 0.5244643 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 67 </td>
+   <td style="text-align:left;color: black;"> chr6:170243847-170244471 </td>
+   <td style="text-align:right;color: black;"> 0.5208847 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 68 </td>
+   <td style="text-align:left;color: black;"> chr1:219480306-219480700 </td>
+   <td style="text-align:right;color: black;"> 0.5158046 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 69 </td>
+   <td style="text-align:left;color: black;"> chr12:132284074-132284204 </td>
+   <td style="text-align:right;color: black;"> 0.4947463 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 70 </td>
+   <td style="text-align:left;color: black;"> chr6:165775109-165775601 </td>
+   <td style="text-align:right;color: black;"> 0.4811234 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 71 </td>
+   <td style="text-align:left;color: black;"> chr20:58623468-58624306 </td>
+   <td style="text-align:right;color: black;"> 0.4783498 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 72 </td>
+   <td style="text-align:left;color: black;"> chr6:167097779-167098778 </td>
+   <td style="text-align:right;color: black;"> 0.4693890 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 73 </td>
+   <td style="text-align:left;color: black;"> chr15:98101280-98103385 </td>
+   <td style="text-align:right;color: black;"> 0.4690154 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 74 </td>
+   <td style="text-align:left;color: black;"> chr22:39200734-39201329 </td>
+   <td style="text-align:right;color: black;"> 0.4637143 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 75 </td>
+   <td style="text-align:left;color: black;"> chr4:187088232-187090691 </td>
+   <td style="text-align:right;color: black;"> 0.4511971 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 76 </td>
+   <td style="text-align:left;color: black;"> chr18:74176390-74177355 </td>
+   <td style="text-align:right;color: black;"> 0.4421582 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 77 </td>
+   <td style="text-align:left;color: black;"> chr6:53304920-53305987 </td>
+   <td style="text-align:right;color: black;"> 0.4264928 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 78 </td>
+   <td style="text-align:left;color: black;"> chr4:41311752-41312672 </td>
+   <td style="text-align:right;color: black;"> 0.4199261 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 79 </td>
+   <td style="text-align:left;color: black;"> chr21:36509829-36510845 </td>
+   <td style="text-align:right;color: black;"> 0.4143878 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 80 </td>
+   <td style="text-align:left;color: black;"> chr9:81403125-81403192 </td>
+   <td style="text-align:right;color: black;"> 0.4125362 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 81 </td>
+   <td style="text-align:left;color: black;"> chr1:2813149-2813616 </td>
+   <td style="text-align:right;color: black;"> 0.4030181 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 82 </td>
+   <td style="text-align:left;color: black;"> chr6:11370533-11371360 </td>
+   <td style="text-align:right;color: black;"> 0.3797832 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 83 </td>
+   <td style="text-align:left;color: black;"> chr6:154153214-154153868 </td>
+   <td style="text-align:right;color: black;"> 0.3791650 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 84 </td>
+   <td style="text-align:left;color: black;"> chr19:6534610-6535594 </td>
+   <td style="text-align:right;color: black;"> 0.3740542 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 85 </td>
+   <td style="text-align:left;color: black;"> chr4:173921464-173921949 </td>
+   <td style="text-align:right;color: black;"> 0.3611939 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 86 </td>
+   <td style="text-align:left;color: black;"> chr4:732507-733348 </td>
+   <td style="text-align:right;color: black;"> 0.3550862 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 87 </td>
+   <td style="text-align:left;color: black;"> chr6:170221224-170222157 </td>
+   <td style="text-align:right;color: black;"> 0.3343878 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 88 </td>
+   <td style="text-align:left;color: black;"> chr19:381202-382038 </td>
+   <td style="text-align:right;color: black;"> 0.3309686 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 89 </td>
+   <td style="text-align:left;color: black;"> chr2:240156460-240157011 </td>
+   <td style="text-align:right;color: black;"> 0.3186527 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 90 </td>
+   <td style="text-align:left;color: black;"> chr2:158866939-158869018 </td>
+   <td style="text-align:right;color: black;"> 0.3182688 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 91 </td>
+   <td style="text-align:left;color: black;"> chr2:26605708-26606291 </td>
+   <td style="text-align:right;color: black;"> 0.3154133 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 92 </td>
+   <td style="text-align:left;color: black;"> chr4:181889036-181889610 </td>
+   <td style="text-align:right;color: black;"> 0.3136847 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 93 </td>
+   <td style="text-align:left;color: black;"> chr3:195873320-195873798 </td>
+   <td style="text-align:right;color: black;"> 0.3130803 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 94 </td>
+   <td style="text-align:left;color: black;"> chr4:1556964-1557051 </td>
+   <td style="text-align:right;color: black;"> 0.3118782 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 95 </td>
+   <td style="text-align:left;color: black;"> chr19:50139610-50141464 </td>
+   <td style="text-align:right;color: black;"> 0.3013338 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 96 </td>
+   <td style="text-align:left;color: black;"> chr20:40909386-40912852 </td>
+   <td style="text-align:right;color: black;"> 0.2924019 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 97 </td>
+   <td style="text-align:left;color: black;"> chr13:113100957-113101218 </td>
+   <td style="text-align:right;color: black;"> 0.2918389 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 98 </td>
+   <td style="text-align:left;color: black;"> chr5:166784284-166784995 </td>
+   <td style="text-align:right;color: black;"> 0.2918020 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 99 </td>
+   <td style="text-align:left;color: black;"> chr7:360272-361408 </td>
+   <td style="text-align:right;color: black;"> 0.2913299 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 100 </td>
+   <td style="text-align:left;color: black;"> chr10:13437135-13438444 </td>
+   <td style="text-align:right;color: black;"> 0.2808038 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 101 </td>
+   <td style="text-align:left;color: black;"> chr12:132471821-132472689 </td>
+   <td style="text-align:right;color: black;"> 0.2786019 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 102 </td>
+   <td style="text-align:left;color: black;"> chr9:93040800-93041604 </td>
+   <td style="text-align:right;color: black;"> 0.2737847 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 103 </td>
+   <td style="text-align:left;color: black;"> chr17:31031271-31031728 </td>
+   <td style="text-align:right;color: black;"> 0.2660970 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 104 </td>
+   <td style="text-align:left;color: black;"> chr14:24881850-24882549 </td>
+   <td style="text-align:right;color: black;"> 0.2550260 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 105 </td>
+   <td style="text-align:left;color: black;"> chr1:222893440-222894172 </td>
+   <td style="text-align:right;color: black;"> 0.2525202 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 106 </td>
+   <td style="text-align:left;color: black;"> chr7:125781046-125781221 </td>
+   <td style="text-align:right;color: black;"> 0.2521439 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 107 </td>
+   <td style="text-align:left;color: black;"> chr18:76984115-76985475 </td>
+   <td style="text-align:right;color: black;"> 0.2514274 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 108 </td>
+   <td style="text-align:left;color: black;"> chr6:3195671-3196680 </td>
+   <td style="text-align:right;color: black;"> 0.2513682 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 109 </td>
+   <td style="text-align:left;color: black;"> chr9:15810076-15811090 </td>
+   <td style="text-align:right;color: black;"> 0.2495573 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 110 </td>
+   <td style="text-align:left;color: black;"> chr15:43472979-43474709 </td>
+   <td style="text-align:right;color: black;"> 0.2383979 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 111 </td>
+   <td style="text-align:left;color: black;"> chr14:84208239-84208379 </td>
+   <td style="text-align:right;color: black;"> 0.2346708 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 112 </td>
+   <td style="text-align:left;color: black;"> chr3:29472340-29473543 </td>
+   <td style="text-align:right;color: black;"> 0.2330461 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 113 </td>
+   <td style="text-align:left;color: black;"> chr20:25989266-25990620 </td>
+   <td style="text-align:right;color: black;"> 0.2202046 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 114 </td>
+   <td style="text-align:left;color: black;"> chr5:178055902-178056054 </td>
+   <td style="text-align:right;color: black;"> 0.2136222 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 115 </td>
+   <td style="text-align:left;color: black;"> chr7:156203099-156204150 </td>
+   <td style="text-align:right;color: black;"> 0.2136139 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 116 </td>
+   <td style="text-align:left;color: black;"> chr2:235439553-235440439 </td>
+   <td style="text-align:right;color: black;"> 0.2098350 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 117 </td>
+   <td style="text-align:left;color: black;"> chr9:136586983-136587811 </td>
+   <td style="text-align:right;color: black;"> 0.2067405 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 118 </td>
+   <td style="text-align:left;color: black;"> chr1:16765375-16766795 </td>
+   <td style="text-align:right;color: black;"> 0.1863021 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 119 </td>
+   <td style="text-align:left;color: black;"> chr2:235958736-235959442 </td>
+   <td style="text-align:right;color: black;"> 0.1678106 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 120 </td>
+   <td style="text-align:left;color: black;"> chr1:174711135-174711745 </td>
+   <td style="text-align:right;color: black;"> 0.1638437 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 121 </td>
+   <td style="text-align:left;color: black;"> chr5:153682636-153683757 </td>
+   <td style="text-align:right;color: black;"> 0.1608758 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 122 </td>
+   <td style="text-align:left;color: black;"> chr11:129930888-129931091 </td>
+   <td style="text-align:right;color: black;"> 0.1527996 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 123 </td>
+   <td style="text-align:left;color: black;"> chr2:6494184-6494526 </td>
+   <td style="text-align:right;color: black;"> 0.1523487 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 124 </td>
+   <td style="text-align:left;color: black;"> chr18:75780887-75781853 </td>
+   <td style="text-align:right;color: black;"> 0.1466415 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 125 </td>
+   <td style="text-align:left;color: black;"> chr5:102671264-102671673 </td>
+   <td style="text-align:right;color: black;"> 0.1421407 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 126 </td>
+   <td style="text-align:left;color: black;"> chr22:49241498-49242088 </td>
+   <td style="text-align:right;color: black;"> 0.1392562 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 127 </td>
+   <td style="text-align:left;color: black;"> chr4:64608519-64609682 </td>
+   <td style="text-align:right;color: black;"> 0.1362408 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 128 </td>
+   <td style="text-align:left;color: black;"> chr5:32500404-32500878 </td>
+   <td style="text-align:right;color: black;"> 0.1334669 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 129 </td>
+   <td style="text-align:left;color: black;"> chr2:438189-438948 </td>
+   <td style="text-align:right;color: black;"> 0.1334059 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 130 </td>
+   <td style="text-align:left;color: black;"> chr7:87303417-87305711 </td>
+   <td style="text-align:right;color: black;"> 0.1277175 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 131 </td>
+   <td style="text-align:left;color: black;"> chr1:159449236-159449613 </td>
+   <td style="text-align:right;color: black;"> 0.1217049 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 132 </td>
+   <td style="text-align:left;color: black;"> chr1:54001964-54005559 </td>
+   <td style="text-align:right;color: black;"> 0.1151738 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 133 </td>
+   <td style="text-align:left;color: black;"> chr21:25779307-25780227 </td>
+   <td style="text-align:right;color: black;"> 0.1151547 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 134 </td>
+   <td style="text-align:left;color: black;"> chr8:4632989-4634724 </td>
+   <td style="text-align:right;color: black;"> 0.1145752 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 135 </td>
+   <td style="text-align:left;color: black;"> chr12:124128968-124129218 </td>
+   <td style="text-align:right;color: black;"> 0.1115024 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 136 </td>
+   <td style="text-align:left;color: black;"> chr11:111358867-111359252 </td>
+   <td style="text-align:right;color: black;"> 0.1087132 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 137 </td>
+   <td style="text-align:left;color: black;"> chr12:130923372-130924426 </td>
+   <td style="text-align:right;color: black;"> 0.1036248 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 138 </td>
+   <td style="text-align:left;color: black;"> chr13:21878205-21879226 </td>
+   <td style="text-align:right;color: black;"> 0.1004043 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 139 </td>
+   <td style="text-align:left;color: black;"> chr7:55151131-55151603 </td>
+   <td style="text-align:right;color: black;"> 0.0933599 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 140 </td>
+   <td style="text-align:left;color: black;"> chr10:102174923-102176229 </td>
+   <td style="text-align:right;color: black;"> 0.0925218 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 141 </td>
+   <td style="text-align:left;color: black;"> chr2:3957041-3957353 </td>
+   <td style="text-align:right;color: black;"> 0.0920574 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 142 </td>
+   <td style="text-align:left;color: black;"> chr22:29311276-29312397 </td>
+   <td style="text-align:right;color: black;"> 0.0876381 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 143 </td>
+   <td style="text-align:left;color: black;"> chr11:134139805-134140078 </td>
+   <td style="text-align:right;color: black;"> 0.0851191 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 144 </td>
+   <td style="text-align:left;color: black;"> chr15:101099851-101100615 </td>
+   <td style="text-align:right;color: black;"> 0.0837642 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 145 </td>
+   <td style="text-align:left;color: black;"> chr9:137304154-137304634 </td>
+   <td style="text-align:right;color: black;"> 0.0821996 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 146 </td>
+   <td style="text-align:left;color: black;"> chr8:121666432-121667219 </td>
+   <td style="text-align:right;color: black;"> 0.0815011 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 147 </td>
+   <td style="text-align:left;color: black;"> chr17:77645163-77645860 </td>
+   <td style="text-align:right;color: black;"> 0.0814076 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 148 </td>
+   <td style="text-align:left;color: black;"> chr9:127751554-127751703 </td>
+   <td style="text-align:right;color: black;"> 0.0702732 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 149 </td>
+   <td style="text-align:left;color: black;"> chr5:157693695-157693764 </td>
+   <td style="text-align:right;color: black;"> 0.0697946 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 150 </td>
+   <td style="text-align:left;color: black;"> chr11:42344332-42344833 </td>
+   <td style="text-align:right;color: black;"> 0.0646904 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 151 </td>
+   <td style="text-align:left;color: black;"> chr4:129854007-129854222 </td>
+   <td style="text-align:right;color: black;"> 0.0614295 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 152 </td>
+   <td style="text-align:left;color: black;"> chr1:88341731-88342217 </td>
+   <td style="text-align:right;color: black;"> 0.0451056 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 153 </td>
+   <td style="text-align:left;color: black;"> chr18:76402150-76402614 </td>
+   <td style="text-align:right;color: black;"> 0.0405253 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 154 </td>
+   <td style="text-align:left;color: black;"> chr13:46557699-46558457 </td>
+   <td style="text-align:right;color: black;"> 0.0219405 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 155 </td>
+   <td style="text-align:left;color: black;"> chr7:81022008-81024404 </td>
+   <td style="text-align:right;color: black;"> 0.0128751 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 156 </td>
+   <td style="text-align:left;color: black;"> chr18:78169442-78170312 </td>
+   <td style="text-align:right;color: black;"> 0.0116611 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 157 </td>
+   <td style="text-align:left;color: black;"> chr5:81887302-81888036 </td>
+   <td style="text-align:right;color: black;"> 0.0105446 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 158 </td>
+   <td style="text-align:left;color: black;"> chr14:73565835-73566904 </td>
+   <td style="text-align:right;color: black;"> 0.0077457 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 159 </td>
+   <td style="text-align:left;color: black;"> chr18:49758421-49759008 </td>
+   <td style="text-align:right;color: black;"> 0.0074412 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 160 </td>
+   <td style="text-align:left;color: black;"> chr1:3183353-3184138 </td>
+   <td style="text-align:right;color: black;"> 0.0065370 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 161 </td>
+   <td style="text-align:left;color: black;"> chr3:60803952-60804990 </td>
+   <td style="text-align:right;color: black;"> 0.0000000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 162 </td>
+   <td style="text-align:left;color: black;"> chr10:130026907-130028053 </td>
+   <td style="text-align:right;color: black;"> -0.0062740 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 163 </td>
+   <td style="text-align:left;color: black;"> chr4:163152743-163153205 </td>
+   <td style="text-align:right;color: black;"> -0.0079044 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 164 </td>
+   <td style="text-align:left;color: black;"> chr2:230614436-230615156 </td>
+   <td style="text-align:right;color: black;"> -0.0087729 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 165 </td>
+   <td style="text-align:left;color: black;"> chr3:186405175-186405860 </td>
+   <td style="text-align:right;color: black;"> -0.0121046 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 166 </td>
+   <td style="text-align:left;color: black;"> chr19:5358259-5359306 </td>
+   <td style="text-align:right;color: black;"> -0.0148191 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 167 </td>
+   <td style="text-align:left;color: black;"> chr6:169186278-169187043 </td>
+   <td style="text-align:right;color: black;"> -0.0209582 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 168 </td>
+   <td style="text-align:left;color: black;"> chr13:85794699-85796286 </td>
+   <td style="text-align:right;color: black;"> -0.0266259 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 169 </td>
+   <td style="text-align:left;color: black;"> chr21:36508409-36508702 </td>
+   <td style="text-align:right;color: black;"> -0.0292421 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 170 </td>
+   <td style="text-align:left;color: black;"> chr2:238965832-238966737 </td>
+   <td style="text-align:right;color: black;"> -0.0303168 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 171 </td>
+   <td style="text-align:left;color: black;"> chr5:2866134-2867323 </td>
+   <td style="text-align:right;color: black;"> -0.0313041 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 172 </td>
+   <td style="text-align:left;color: black;"> chr13:73122334-73123027 </td>
+   <td style="text-align:right;color: black;"> -0.0345410 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 173 </td>
+   <td style="text-align:left;color: black;"> chr1:217964734-217965268 </td>
+   <td style="text-align:right;color: black;"> -0.0368457 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 174 </td>
+   <td style="text-align:left;color: black;"> chr3:43656421-43656844 </td>
+   <td style="text-align:right;color: black;"> -0.0424631 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 175 </td>
+   <td style="text-align:left;color: black;"> chr15:25231239-25232922 </td>
+   <td style="text-align:right;color: black;"> -0.0433998 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 176 </td>
+   <td style="text-align:left;color: black;"> chr17:14771347-14772264 </td>
+   <td style="text-align:right;color: black;"> -0.0534016 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 177 </td>
+   <td style="text-align:left;color: black;"> chr6:27595344-27597858 </td>
+   <td style="text-align:right;color: black;"> -0.0574453 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 178 </td>
+   <td style="text-align:left;color: black;"> chr19:4566208-4567608 </td>
+   <td style="text-align:right;color: black;"> -0.0629549 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 179 </td>
+   <td style="text-align:left;color: black;"> chr18:23577617-23578181 </td>
+   <td style="text-align:right;color: black;"> -0.0641511 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 180 </td>
+   <td style="text-align:left;color: black;"> chr15:25211223-25215038 </td>
+   <td style="text-align:right;color: black;"> -0.0664816 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 181 </td>
+   <td style="text-align:left;color: black;"> chr1:103772215-103772597 </td>
+   <td style="text-align:right;color: black;"> -0.0702755 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 182 </td>
+   <td style="text-align:left;color: black;"> chr3:56691969-56692267 </td>
+   <td style="text-align:right;color: black;"> -0.0748047 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 183 </td>
+   <td style="text-align:left;color: black;"> chr21:42499561-42500310 </td>
+   <td style="text-align:right;color: black;"> -0.0819566 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 184 </td>
+   <td style="text-align:left;color: black;"> chr14:99066246-99066632 </td>
+   <td style="text-align:right;color: black;"> -0.0830927 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 185 </td>
+   <td style="text-align:left;color: black;"> chr8:69468917-69470253 </td>
+   <td style="text-align:right;color: black;"> -0.0832307 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 186 </td>
+   <td style="text-align:left;color: black;"> chr20:56623573-56623861 </td>
+   <td style="text-align:right;color: black;"> -0.0848668 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 187 </td>
+   <td style="text-align:left;color: black;"> chr19:39518435-39519118 </td>
+   <td style="text-align:right;color: black;"> -0.0912026 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 188 </td>
+   <td style="text-align:left;color: black;"> chr11:30913053-30913159 </td>
+   <td style="text-align:right;color: black;"> -0.1000250 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 189 </td>
+   <td style="text-align:left;color: black;"> chr1:158742637-158743094 </td>
+   <td style="text-align:right;color: black;"> -0.1080235 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 190 </td>
+   <td style="text-align:left;color: black;"> chr13:41422472-41424465 </td>
+   <td style="text-align:right;color: black;"> -0.1118831 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 191 </td>
+   <td style="text-align:left;color: black;"> chr11:24896245-24896729 </td>
+   <td style="text-align:right;color: black;"> -0.1145030 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 192 </td>
+   <td style="text-align:left;color: black;"> chr2:106581037-106581627 </td>
+   <td style="text-align:right;color: black;"> -0.1174112 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 193 </td>
+   <td style="text-align:left;color: black;"> chr15:25205676-25206740 </td>
+   <td style="text-align:right;color: black;"> -0.1192647 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 194 </td>
+   <td style="text-align:left;color: black;"> chr22:49266537-49266993 </td>
+   <td style="text-align:right;color: black;"> -0.1256279 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 195 </td>
+   <td style="text-align:left;color: black;"> chr5:162036506-162037063 </td>
+   <td style="text-align:right;color: black;"> -0.1264054 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 196 </td>
+   <td style="text-align:left;color: black;"> chr6:11770351-11771414 </td>
+   <td style="text-align:right;color: black;"> -0.1267218 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 197 </td>
+   <td style="text-align:left;color: black;"> chr2:171899385-171900718 </td>
+   <td style="text-align:right;color: black;"> -0.1287859 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 198 </td>
+   <td style="text-align:left;color: black;"> chr12:131120675-131121158 </td>
+   <td style="text-align:right;color: black;"> -0.1318459 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 199 </td>
+   <td style="text-align:left;color: black;"> chr15:85842851-85842996 </td>
+   <td style="text-align:right;color: black;"> -0.1334669 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 200 </td>
+   <td style="text-align:left;color: black;"> chr11:105065118-105067605 </td>
+   <td style="text-align:right;color: black;"> -0.1371137 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 201 </td>
+   <td style="text-align:left;color: black;"> chr9:124020277-124021335 </td>
+   <td style="text-align:right;color: black;"> -0.1452108 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 202 </td>
+   <td style="text-align:left;color: black;"> chr16:68528735-68529089 </td>
+   <td style="text-align:right;color: black;"> -0.1510862 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 203 </td>
+   <td style="text-align:left;color: black;"> chr5:153794545-153794705 </td>
+   <td style="text-align:right;color: black;"> -0.1562344 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 204 </td>
+   <td style="text-align:left;color: black;"> chr20:4758993-4760025 </td>
+   <td style="text-align:right;color: black;"> -0.1610095 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 205 </td>
+   <td style="text-align:left;color: black;"> chr16:69758011-69758353 </td>
+   <td style="text-align:right;color: black;"> -0.1632493 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 206 </td>
+   <td style="text-align:left;color: black;"> chr2:105081078-105081457 </td>
+   <td style="text-align:right;color: black;"> -0.1674988 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 207 </td>
+   <td style="text-align:left;color: black;"> chr8:127205196-127206577 </td>
+   <td style="text-align:right;color: black;"> -0.1677231 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 208 </td>
+   <td style="text-align:left;color: black;"> chr19:50746732-50747346 </td>
+   <td style="text-align:right;color: black;"> -0.1713753 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 209 </td>
+   <td style="text-align:left;color: black;"> chr4:1043823-1044912 </td>
+   <td style="text-align:right;color: black;"> -0.1765162 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 210 </td>
+   <td style="text-align:left;color: black;"> chr10:2660323-2660703 </td>
+   <td style="text-align:right;color: black;"> -0.1769305 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 211 </td>
+   <td style="text-align:left;color: black;"> chr15:25237522-25240205 </td>
+   <td style="text-align:right;color: black;"> -0.1801192 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 212 </td>
+   <td style="text-align:left;color: black;"> chr8:7019756-7020008 </td>
+   <td style="text-align:right;color: black;"> -0.1826542 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 213 </td>
+   <td style="text-align:left;color: black;"> chr8:7093800-7094934 </td>
+   <td style="text-align:right;color: black;"> -0.1833989 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 214 </td>
+   <td style="text-align:left;color: black;"> chr6:3902417-3905327 </td>
+   <td style="text-align:right;color: black;"> -0.1880943 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 215 </td>
+   <td style="text-align:left;color: black;"> chr2:82256850-82257624 </td>
+   <td style="text-align:right;color: black;"> -0.1880967 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 216 </td>
+   <td style="text-align:left;color: black;"> chr7:2716808-2718684 </td>
+   <td style="text-align:right;color: black;"> -0.1927235 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 217 </td>
+   <td style="text-align:left;color: black;"> chr1:244105152-244106840 </td>
+   <td style="text-align:right;color: black;"> -0.2005311 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 218 </td>
+   <td style="text-align:left;color: black;"> chr4:10172119-10175040 </td>
+   <td style="text-align:right;color: black;"> -0.2080300 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 219 </td>
+   <td style="text-align:left;color: black;"> chr17:43330042-43332379 </td>
+   <td style="text-align:right;color: black;"> -0.2081024 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 220 </td>
+   <td style="text-align:left;color: black;"> chr1:191025913-191025995 </td>
+   <td style="text-align:right;color: black;"> -0.2115186 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 221 </td>
+   <td style="text-align:left;color: black;"> chr17:68082113-68083197 </td>
+   <td style="text-align:right;color: black;"> -0.2152136 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 222 </td>
+   <td style="text-align:left;color: black;"> chr19:54004545-54005610 </td>
+   <td style="text-align:right;color: black;"> -0.2217913 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 223 </td>
+   <td style="text-align:left;color: black;"> chr2:239659936-239660880 </td>
+   <td style="text-align:right;color: black;"> -0.2220909 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 224 </td>
+   <td style="text-align:left;color: black;"> chr22:25955237-25955486 </td>
+   <td style="text-align:right;color: black;"> -0.2235140 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 225 </td>
+   <td style="text-align:left;color: black;"> chr4:178863848-178864045 </td>
+   <td style="text-align:right;color: black;"> -0.2248146 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 226 </td>
+   <td style="text-align:left;color: black;"> chr22:11626974-11628570 </td>
+   <td style="text-align:right;color: black;"> -0.2294795 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 227 </td>
+   <td style="text-align:left;color: black;"> chr18:76788431-76789458 </td>
+   <td style="text-align:right;color: black;"> -0.2409060 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 228 </td>
+   <td style="text-align:left;color: black;"> chr11:70443024-70443555 </td>
+   <td style="text-align:right;color: black;"> -0.2414879 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 229 </td>
+   <td style="text-align:left;color: black;"> chr16:29748521-29750083 </td>
+   <td style="text-align:right;color: black;"> -0.2429368 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 230 </td>
+   <td style="text-align:left;color: black;"> chr16:84282948-84284265 </td>
+   <td style="text-align:right;color: black;"> -0.2438652 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 231 </td>
+   <td style="text-align:left;color: black;"> chr2:127660847-127661594 </td>
+   <td style="text-align:right;color: black;"> -0.2578441 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 232 </td>
+   <td style="text-align:left;color: black;"> chr19:46022392-46023195 </td>
+   <td style="text-align:right;color: black;"> -0.2646370 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 233 </td>
+   <td style="text-align:left;color: black;"> chr6:163321475-163322229 </td>
+   <td style="text-align:right;color: black;"> -0.2709673 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 234 </td>
+   <td style="text-align:left;color: black;"> chr4:181375900-181376230 </td>
+   <td style="text-align:right;color: black;"> -0.2731369 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 235 </td>
+   <td style="text-align:left;color: black;"> chr9:79438537-79439406 </td>
+   <td style="text-align:right;color: black;"> -0.2823100 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 236 </td>
+   <td style="text-align:left;color: black;"> chr16:73879410-73881199 </td>
+   <td style="text-align:right;color: black;"> -0.2915480 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 237 </td>
+   <td style="text-align:left;color: black;"> chr18:27585360-27586069 </td>
+   <td style="text-align:right;color: black;"> -0.2920057 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 238 </td>
+   <td style="text-align:left;color: black;"> chr18:11159397-11160037 </td>
+   <td style="text-align:right;color: black;"> -0.3082328 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 239 </td>
+   <td style="text-align:left;color: black;"> chr18:49759404-49760361 </td>
+   <td style="text-align:right;color: black;"> -0.3164229 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 240 </td>
+   <td style="text-align:left;color: black;"> chr12:69875613-69876026 </td>
+   <td style="text-align:right;color: black;"> -0.3343153 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 241 </td>
+   <td style="text-align:left;color: black;"> chr5:173272858-173274471 </td>
+   <td style="text-align:right;color: black;"> -0.3496823 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 242 </td>
+   <td style="text-align:left;color: black;"> chr22:39724452-39725162 </td>
+   <td style="text-align:right;color: black;"> -0.3530187 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 243 </td>
+   <td style="text-align:left;color: black;"> chr6:41603185-41603449 </td>
+   <td style="text-align:right;color: black;"> -0.3532023 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 244 </td>
+   <td style="text-align:left;color: black;"> chr8:6967160-6968331 </td>
+   <td style="text-align:right;color: black;"> -0.3555871 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 245 </td>
+   <td style="text-align:left;color: black;"> chr13:94551218-94552083 </td>
+   <td style="text-align:right;color: black;"> -0.3580432 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 246 </td>
+   <td style="text-align:left;color: black;"> chr4:169923952-169924183 </td>
+   <td style="text-align:right;color: black;"> -0.3610761 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 247 </td>
+   <td style="text-align:left;color: black;"> chr2:132278335-132281096 </td>
+   <td style="text-align:right;color: black;"> -0.3652576 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 248 </td>
+   <td style="text-align:left;color: black;"> chr13:53783577-53783752 </td>
+   <td style="text-align:right;color: black;"> -0.3675364 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 249 </td>
+   <td style="text-align:left;color: black;"> chr3:1394385-1394460 </td>
+   <td style="text-align:right;color: black;"> -0.3699962 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 250 </td>
+   <td style="text-align:left;color: black;"> chr7:64872416-64873199 </td>
+   <td style="text-align:right;color: black;"> -0.3849001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 251 </td>
+   <td style="text-align:left;color: black;"> chr1:7655918-7656465 </td>
+   <td style="text-align:right;color: black;"> -0.3982561 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 252 </td>
+   <td style="text-align:left;color: black;"> chr11:131373893-131374484 </td>
+   <td style="text-align:right;color: black;"> -0.4003320 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 253 </td>
+   <td style="text-align:left;color: black;"> chr17:43973837-43974435 </td>
+   <td style="text-align:right;color: black;"> -0.4017196 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 254 </td>
+   <td style="text-align:left;color: black;"> chr12:55667953-55668408 </td>
+   <td style="text-align:right;color: black;"> -0.4116497 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 255 </td>
+   <td style="text-align:left;color: black;"> chr8:4798976-4800241 </td>
+   <td style="text-align:right;color: black;"> -0.4278564 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 256 </td>
+   <td style="text-align:left;color: black;"> chr5:149562195-149563130 </td>
+   <td style="text-align:right;color: black;"> -0.4632220 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 257 </td>
+   <td style="text-align:left;color: black;"> chr6:94824264-94824608 </td>
+   <td style="text-align:right;color: black;"> -0.4640539 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 258 </td>
+   <td style="text-align:left;color: black;"> chr3:107367192-107367681 </td>
+   <td style="text-align:right;color: black;"> -0.4671340 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 259 </td>
+   <td style="text-align:left;color: black;"> chr8:141550195-141550353 </td>
+   <td style="text-align:right;color: black;"> -0.4862589 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 260 </td>
+   <td style="text-align:left;color: black;"> chr5:172805856-172807371 </td>
+   <td style="text-align:right;color: black;"> -0.6292370 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;color: black;"> 261 </td>
+   <td style="text-align:left;color: black;"> chr3:69453415-69456039 </td>
+   <td style="text-align:right;color: black;"> -0.6677637 </td>
   </tr>
 </tbody>
 </table>
