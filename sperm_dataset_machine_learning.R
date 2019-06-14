@@ -365,3 +365,21 @@ sigfeatureKable
 
 top20Kable
 top20OverlapKable
+
+save_kable(cmLegend, "cmLegend.pdf")
+save_kable(cmKableSvm, "cmKableSvm.pdf")
+save_kable(cmKableRf, "cmKableRf.pdf")
+
+load("top20Kable.RData")
+save_kable(top20Kable, "top20Kable.pdf")
+
+load("top20OverlapKable.RData")
+save_kable(top20OverlapKable, "top20OverlapKable.pdf")
+
+load("borutaKable.RData")
+save_kable(borutaKable, "borutaKable.pdf")
+
+load("sigfeatureKable.RData")
+save_kable(sigfeatureKable, "sigfeatureKable.pdf")
+
+
