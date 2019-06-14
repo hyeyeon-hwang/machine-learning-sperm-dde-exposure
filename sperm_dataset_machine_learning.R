@@ -384,4 +384,39 @@ save_kable(borutaKable, "borutaKable.pdf")
 load("sigfeatureKable.RData")
 save_kable(sigfeatureKable, "sigfeatureKable.pdf")
 
+write.csv(sigfeatureVarsSvm, "sigfeatureVarsSvm.csv")
+write.csv(borutaAllVarsRf, "borutaAllVarsRf.csv")
+
+# Data from dmr32 for sigfeature list, boruta list, top 15 list
+svmDmrs <- sigfeatureVarsSvm$DMR
+rfDmrs <- borutaAllVarsRf$DMR
+overlap15Dmrs <- top20Overlap$DMR
+
+save(svmDmrs, file = "svmDmrs.RData")
+save(rfDmrs, file = "rfDmrs.RData")
+save(top20Overlap, file = "top20Overlap.RData")
+
+svmDmrs %in% dmr32
+
+dmr32NoStr <- colnames(dmr32)  %>% str_remove_all("`")
+
+
+svmDmrs %in% dmr32
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
