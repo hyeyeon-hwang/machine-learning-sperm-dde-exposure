@@ -275,7 +275,7 @@ borutaAllVarsRf <- data.frame(DMR = rownames(boruta.train.stats),
   add_column(Ranking = 1:nrow(boruta.train.stats), .before = 1)
 #borutaAllVarsRf
 borutaKable <- varImpTable(borutaAllVarsRf, "boruta", 3)
-
+save(borutaAllVarsRf, file = "borutaAllVarsRf.RData")
 
 # includes "Tentative" + everything in borutaRF
 # boruta.sig <- names(boruta.train$finalDecision[boruta.train$finalDecision %in% c("Confirmed", "Tentative")])  # collect Confirmed and Tentative variables
@@ -299,6 +299,8 @@ sigfeatureVarsSvm <- data.frame(Ranking = 1:length(sigFeatureDmrs),
                                 DMR = sigFeatureDmrs)
 #sigfeatureVarsSvm
 sigfeatureKable <- varImpTable(sigfeatureVarsSvm, "sigFeature", 2)
+save(sigfeatureVarsSvm, file = "sigfeatureVarsSvm.RData")
+
 #sigfeatureKable
 varsDf <- data.frame(Ranking = 1:261,
                      DMR_varImp = varImpRfList$DMR,
