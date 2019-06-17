@@ -437,7 +437,7 @@ library("org.Hs.eg.db")
 # Take your data frame and pipe it into this to annotate, where you need to fill in the seqnames (chromosome) as well as start and stop
 
 data.frame %>%
-  GenomicRanges:: makeGRangesFromDataFrame(ignore.strand = TRUE,
+  GenomicRanges::makeGRangesFromDataFrame(ignore.strand = TRUE,
                                            seqnames.field  =,
                                            start.field  =,
                                            end.field  =) %>%
