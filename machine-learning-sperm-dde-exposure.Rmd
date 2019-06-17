@@ -444,6 +444,6 @@ data.frame %>%
   ChIPseeker::annotatePeak(TxDb = TxDb.Hsapiens.UCSC.hg38.knownGene,
                            annoDb = "org.Hs.eg.db",
                            overlap = "all") %>%
-  DMRichR::tidyRegions() %>% 
+  as.data.frame() %>%  
   openxlsx::write.xlsx(file = "machinelearning_annotated.xlsx")
 ```
