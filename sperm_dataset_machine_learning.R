@@ -66,6 +66,25 @@ dmr32 <- dmr52[which(dmr52$SampleID %in% sampleName32), -1] # exclude 'SampleID'
 dmr20 <- dmr52[which(dmr52$SampleID %in% sampleName20), -1] # exclude 'SampleID' 1st column, dim(dmr20): 20 x 262
 
 
+prepDataNoTranspose <- function(dmrFull) {
+  # exclude columns not in first 3 (seqnames, start, end) or last 52 (samples)
+  numCols <- ncol(dmrFull)
+  numSamples <- 52
+  excludeStart <- 4 # width column
+  excludeEnd <- numCols - numSamples # percentDifference column
+  
+  # transpose data
+  retData <- dmrFull %>%
+    as.tibble() %>% 
+    select(-(excludeStart:excludeEnd)) %>%
+    unite(seqId1, seqnames, start, sep = ":") %>%
+    unite(seqId, seqId1, end, sep = "-")
+
+  return(retData)
+}
+dmr52Orig <- prepDataNoTranspose(dmr52Full)
+
+
 # Random Forest (RF) and Support Vector Machine (SVM) models --------------
 
 seed <- 9999
@@ -353,6 +372,62 @@ top20OverlapKable <- top20Overlap %>%
 #top20OverlapKable
 
 
+
+
+# Methylation values for top 20 overlapping DMRS (15 in total) in order by var imp rank
+overlap15 <- as.character(top20Overlap$DMR)
+overlap15Data <- dmr52Orig[ which(dmr52Orig$seqId %in% overlap15 == TRUE), ]
+overlap15Data <- overlap15Data  %>% add_column(order = 0, .before = 1)
+for (i in 1:15) {
+  orderedRowSeqId <- dmr52Orig$seqId[which(match(dmr52Orig$seqId, overlap15) == i) ]
+  overlap15Data$order[which(overlap15Data$seqId == orderedRowSeqId)] <- i 
+}
+overlap15Data <- overlap15Data %>% arrange(order)
+overlap15Data <- overlap15Data[ , -which(names(overlap15Data) %in% sampleName20)]
+overlap15Data <- overlap15Data %>% rename(dmrPredictor = seqId)
+write.csv(overlap15Data, "overlap15Data.csv")
+
+# Methylation values for ranked SVM DMRS (261 in total) in order by var imp rank
+svmDmr <- as.character(sigfeatureVarsSvm$DMR)
+svmDmrData <- dmr52Orig[ which(dmr52Orig$seqId %in% svmDmr == TRUE), ]
+svmDmrData <- svmDmrData %>% add_column(order = 0, .before = 1)
+for (i in 1:261) {
+  orderedRowSeqId <- dmr52Orig$seqId[which(match(dmr52Orig$seqId, svmDmr) == i) ]
+  svmDmrData$order[which(svmDmrData$seqId == orderedRowSeqId)] <- i 
+}
+svmDmrData <- svmDmrData %>% arrange(order)
+svmDmrData <- svmDmrData[ , -which(names(svmDmrData) %in% sampleName20)]
+svmDmrData <- svmDmrData %>% rename(dmrPredictor = seqId)
+write.csv(svmDmrData, "svmDmrData.csv")
+# top 20 from SVM
+write.csv(svmDmrData[1:20, ], "svmDmrData20.csv")
+
+# Methylation values for ranked RF DMRS (261 in total) in order by var imp rank
+rfDmr <- as.character(borutaAllVarsRf$DMR)
+rfDmrData <- dmr52Orig[ which(dmr52Orig$seqId %in% rfDmr == TRUE), ]
+rfDmrData <- rfDmrData %>% add_column(order = 0, .before = 1)
+for (i in 1:261) {
+  orderedRowSeqId <- dmr52Orig$seqId[which(match(dmr52Orig$seqId, rfDmr) == i) ]
+  rfDmrData$order[which(rfDmrData$seqId == orderedRowSeqId)] <- i 
+}
+rfDmrData <- rfDmrData %>% arrange(order)
+rfDmrData <- rfDmrData[ , -which(names(rfDmrData) %in% sampleName20)]
+rfDmrData <- rfDmrData %>% rename(dmrPredictor = seqId)
+write.csv(rfDmrData, "rfDmrData.csv")
+# top 20 from RF
+write.csv(rfDmrData[1:20, ], "rfDmrData20.csv")
+
+# List of DMR Predictors
+dmrs <- dmr32Full[, 1:3]
+dmrs_chr <- dmrs$chr 
+dmrs_chr <- dmrs_chr %>% str_remove_all("chr")
+dmrPredictors <- dmrs %>%
+  unite(seqId1, chr, start, sep = ":") %>%
+  unite(seqId, seqId1, end, sep = "-")
+dmrs <- dmrs %>% add_column(dmrPredictor = dmrPredictors$seqId)
+dmrs <- dmrs %>% add_column(chrNum = dmrs_chr)
+write.csv (dmrs, "DMRs_predictors.csv")
+
 cmRf
 cmSvm
 
@@ -395,24 +470,6 @@ overlap15Dmrs <- top20Overlap$DMR
 save(svmDmrs, file = "svmDmrs.RData")
 save(rfDmrs, file = "rfDmrs.RData")
 save(top20Overlap, file = "top20Overlap.RData")
-
-svmDmrs %in% dmr32
-
-dmr32NoStr <- colnames(dmr32)  %>% str_remove_all("`")
-
-
-svmDmrs %in% dmr32
-
-
-
-
-
-
-
-
-
-
-
 
 
 
