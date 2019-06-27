@@ -427,3 +427,23 @@ top20OverlapKable
 # save_kable(top20Kable, "top20Kable.png")
 # save_kable(top20OverlapKable, "top20OverlapKable.png")
 ```
+
+```{r annotate regions, echo=TRUE}
+BiocManager::install(c("ben-laufer/DMRichR", "TxDb.Hsapiens.UCSC.hg38.knownGene", "org.Hs.eg.db"))
+library("DMRichR")
+library("TxDb.Hsapiens.UCSC.hg38.knownGene")
+library("org.Hs.eg.db")
+
+# Take your data frame and pipe it into this to annotate, where you need to fill in the seqnames (chromosome) as well as start and stop
+
+data.frame %>%
+  GenomicRanges::makeGRangesFromDataFrame(ignore.strand = TRUE,
+                                           seqnames.field  =,
+                                           start.field  =,
+                                           end.field  =) %>%
+  ChIPseeker::annotatePeak(TxDb = TxDb.Hsapiens.UCSC.hg38.knownGene,
+                           annoDb = "org.Hs.eg.db",
+                           overlap = "all") %>%
+  as.data.frame() %>%  
+  openxlsx::write.xlsx(file = "machinelearning_annotated.xlsx")
+```
